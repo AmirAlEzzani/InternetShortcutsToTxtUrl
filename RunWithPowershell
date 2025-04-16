@@ -1,0 +1,3 @@
+Get-ChildItem -Path "C:\Users\PUT_PATH_HERE" -Recurse -Filter "*.url" | 
+ForEach-Object { Get-Content $_.FullName | Where-Object { $_ -match '^URL=' } | ForEach-Object { $_ -replace 'URL=', '' } } | 
+Set-Content "C:\Users\PUT_PATH_HERE\combined_urls.txt"
